@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  //https://jsonplaceholder.typicode.com/users    (Get Api)
+  userList:any = [];
+
+  constructor(private http: HttpClient){
+    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data)=>{
+      this.userList = data;
+    })
+  }
+  
 }

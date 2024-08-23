@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AddressPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(address: any, ...args: unknown[]): unknown {
+    return `${address?.street}, ${address?.suite}, ${address?.city}, ${address?.zipcode}` ;
   }
 
 }
