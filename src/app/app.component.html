@@ -1,21 +1,64 @@
 
 
-<h2>User List</h2>
-<input type="text" placeholder="Search" style="height: 20px; margin-bottom: 10px;">
+<!--Construct Dynamic form based on the json & Patch the form-->
+<h2>User Form</h2>
+<div *ngFor="let formData of formConfiguration">
+  <label>{{formData?.label}}</label>: <br>
+  <input type="text" class="input-box">
+</div>
+
+
+<!--Construct Nested Form-->
+<h2>Nested Form</h2>
+<div>
+  <label>Product ID</label>: <br>
+  <input type="text" class="input-box"> <br>
+
+  <label>Product Name</label>: <br>
+  <input type="text" class="input-box"> <br>
+
+  <label>Price</label>: <br>
+  <input type="text" class="input-box"> <br>
+
+  <button>Add Product</button>
+</div><br><br>
+
+
+<!--Showcase the product & apply Discount-->
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Price</th>
+    <th>Discount Price</th>
+  </tr>
+  <tr>
+    <td>123</td>
+    <td>₹12,6878</td>
+    <td>₹9,9454</td>
+  </tr>
+</table>
+
+<br>
+  <input type="text" class="input-box" placeholder="Discount Percentage"> <br>
+
+
+  <!--User list filter-->
+<h2>User List Filter</h2>
+<input type="text" placeholder="Search" class="input-box">
 
 <table>
   <tr>
     <th>Id</th>
     <th>Name</th>
     <th>Address</th>
-    <th>Latitude </th> <!--<i class="fa fa-sort-asc"></i> <i class="fa fa-sort-desc"></i>-->
+    <th>Latitude </th>
     <th>Longitude </th>
     <th>Website</th>
   </tr>
   <tr *ngFor="let data of userList">
     <td>{{data?.id}}</td>
     <td>{{data?.name}} ({{data?.username}})</td>
-    <td>{{data?.address | address}}</td> <!--Using the pipe to combine the address-->
+    <td>{{data?.address | address}}</td>
     <td>{{data?.address?.geo?.lat}}</td>
     <td>{{data?.address?.geo?.lng}}</td>
     <td><a href="{{data?.website}}">{{data?.website}}</a></td>
